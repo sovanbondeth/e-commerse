@@ -1,0 +1,33 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBWcci-dVdd0WOWk4jgJqEtTKc9uoLn0BA",
+  authDomain: "e-commers-web-a028b.firebaseapp.com",
+  projectId: "e-commers-web-a028b",
+  storageBucket: "e-commers-web-a028b.firebasestorage.app",
+  messagingSenderId: "562419172473",
+  appId: "1:562419172473:web:ce0f48d779c812588140a8"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+https://e-commers-web-a028b-default-rtdb.firebaseio.com/
+
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
