@@ -1,27 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          firebase: ['firebase/app', 'firebase/auth', 'firebase/database']
-        }
-      }
+    hmr: {
+      overlay: false
     }
   },
   resolve: {
     alias: {
-      'react-icons/fa': 'react-icons/fa/index'
+      '@': path.resolve(__dirname, './src')
     }
+  },
+  optimizeDeps: {
+    include: ['redux-persist', '@reduxjs/toolkit', 'react-redux']
   }
 })
